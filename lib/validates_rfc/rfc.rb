@@ -2,16 +2,23 @@
 
 module ValidatesRfc
   class Rfc
+    COMPANY_REGEX = /\A([A-ZÑ&]{3})([0-9]{2}[0-1][0-9][0-3][0-9])([A-Z0-9]{3})\z/i.freeze
+    PERSON_REGEX = /\A([A-ZÑ&]{4})([0-9]{2}[0-1][0-9][0-3][0-9])([A-Z0-9]{3})\z/i.freeze
     REGEX = /\A([A-ZÑ&]{3,4})([0-9]{2}[0-1][0-9][0-3][0-9])([A-Z0-9]{3})\z/i.freeze
 
-    def initialize(value)
+    def initialize(value, type = :both)
       @value = value
+      @type = type
     end
 
     def valid?
       return true if @value.blank?
 
-      @value.match(REGEX)
+      case @type
+      when :both then @value.match(REGEX)
+      when :person then @value.match(PERSON_REGEX)
+      when :company then @value.match(COMPANY_REGEX)
+      end
 
       Regexp.last_match(0).present? && valid_date?(Regexp.last_match(2))
     end

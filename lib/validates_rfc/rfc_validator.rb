@@ -2,7 +2,8 @@
 
 class RfcValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
-    rfc = ValidatesRfc::Rfc.new(value)
+    type = options[:type] || :both
+    rfc = ValidatesRfc::Rfc.new(value, type)
 
     return if rfc.valid?
 
