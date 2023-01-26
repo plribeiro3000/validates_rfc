@@ -1,5 +1,7 @@
 # ValidatesRfc
 
+This projects aims to validate RFC documents (Registro Federal de Contibuyentes).
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -17,6 +19,33 @@ Or install it yourself as:
     $ gem install validates_rfc
 
 ## Usage
+
+Just use as any other validator:
+
+```ruby
+class User < ActiveRecord::Base
+  validates :rfc, rfc: true
+  validates :company_rfc, rfc: { type: :company }
+  validates :person_rfc, rfc: { type: :person }
+end
+```
+
+## Testing
+
+Require the matcher:
+
+```ruby
+require 'validates_rfc/require_a_valid_rfc_matcher'
+```
+
+Use in your tests:
+
+```ruby
+it { is_expected.to require_a_valid_rfc } # It will test the attribute :rfc by default
+it { is_expected.to require_a_valid_rfc(:id) } # It will accept both person and company RFC's
+it { is_expected.to require_a_valid_rfc(:id).for_company } # It will accept only company RFC's
+it { is_expected.to require_a_valid_rfc(:id).for_person } # It will accept only person RFC's
+```
 
 ## Development
 
