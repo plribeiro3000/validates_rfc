@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
-require_relative "validates_rfc/version"
+require 'active_model'
+require 'validates_rfc/rfc_validator'
+require 'validates_rfc/require_a_valid_rfc_matcher' if defined?(::Shoulda)
 
 module ValidatesRfc
-  class Error < StandardError; end
-  # Your code goes here...
+  autoload :Rfc, 'validates_rfc/rfc'
 end

@@ -1,21 +1,21 @@
 # frozen_string_literal: true
 
-require_relative "lib/validates_rfc/version"
+require_relative 'lib/validates_rfc/version'
 
 Gem::Specification.new do |spec|
-  spec.name = "validates_rfc"
+  spec.name = 'validates_rfc'
   spec.version = ValidatesRfc::VERSION
-  spec.authors = ["Paulo Ribeiro"]
-  spec.email = ["plribeiro3000@gmail.com"]
+  spec.authors = ['Paulo Ribeiro']
+  spec.email = ['plribeiro3000@gmail.com']
 
-  spec.summary = "Validates mexican RFC and test it with matchers in a simple way."
-  spec.homepage = "https://github.com/plribeiro3000/validates_rfc"
-  spec.license = "MIT"
-  spec.required_ruby_version = ">= 2.6.0"
+  spec.summary = 'Validates mexican RFC and test it with matchers in a simple way.'
+  spec.homepage = 'https://github.com/plribeiro3000/validates_rfc'
+  spec.license = 'MIT'
+  spec.required_ruby_version = '>= 2.6.0'
 
-  spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/plribeiro3000/validates_rfc"
-  spec.metadata["changelog_uri"] = "https://github.com/plribeiro3000/validates_curp/blob/master/CHANGELOG.md"
+  spec.metadata['homepage_uri'] = spec.homepage
+  spec.metadata['source_code_uri'] = 'https://github.com/plribeiro3000/validates_rfc'
+  spec.metadata['changelog_uri'] = 'https://github.com/plribeiro3000/validates_curp/blob/master/CHANGELOG.md'
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
@@ -24,9 +24,9 @@ Gem::Specification.new do |spec|
       (f == __FILE__) || f.match(%r{\A(?:(?:bin|test|spec|features)/|\.(?:git|travis|circleci)|appveyor)})
     end
   end
-  spec.bindir = "exe"
+  spec.bindir = 'exe'
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib"]
+  spec.require_paths = ['lib']
 
   spec.add_development_dependency 'jazz_fingers'
   spec.add_development_dependency 'rake'
